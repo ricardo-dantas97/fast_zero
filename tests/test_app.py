@@ -69,14 +69,14 @@ def test_update_user_should_return_not_found_(client):
     )
 
     assert response.status_code == HTTPStatus.NOT_FOUND
-    assert response.json() == {"detail": "User not found"}
+    assert response.json() == {'detail': 'User not found'}
 
 
 def test_delete_user_should_return_not_found_(client):
     response = client.delete('/users/2')
 
     assert response.status_code == HTTPStatus.NOT_FOUND
-    assert response.json() == {"detail": "User not found"}
+    assert response.json() == {'detail': 'User not found'}
 
 
 def test_read_user(client):
@@ -86,7 +86,7 @@ def test_read_user(client):
     assert response.json() == {
         'username': 'Bob',
         'email': 'bob@example.com',
-        'id': 1
+        'id': 1,
     }
 
 
@@ -94,7 +94,7 @@ def test_read_user_should_return_not_found(client):
     response = client.get('/users/2')
 
     assert response.status_code == HTTPStatus.NOT_FOUND
-    assert response.json() == {"detail": "User not found"}
+    assert response.json() == {'detail': 'User not found'}
 
 
 def test_delete_user(client):

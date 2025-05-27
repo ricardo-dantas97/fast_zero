@@ -19,9 +19,7 @@ def read_root():
 )
 def read_user(user_id: int):
     if user_id < 1 or user_id > len(database):
-        raise HTTPException(
-            HTTPStatus.NOT_FOUND, detail='User not found'
-        )
+        raise HTTPException(HTTPStatus.NOT_FOUND, detail='User not found')
 
     return database[user_id - 1]
 
@@ -47,9 +45,7 @@ def update_user(user_id: int, user: UserSchema):
     user_with_id = UserDB(**user.model_dump(), id=user_id)
 
     if user_id < 1 or user_id > len(database):
-        raise HTTPException(
-            HTTPStatus.NOT_FOUND, detail='User not found'
-        )
+        raise HTTPException(HTTPStatus.NOT_FOUND, detail='User not found')
 
     database[user_id - 1] = user_with_id
 
@@ -61,8 +57,6 @@ def update_user(user_id: int, user: UserSchema):
 )
 def delete_user(user_id: int):
     if user_id < 1 or user_id > len(database):
-        raise HTTPException(
-            HTTPStatus.NOT_FOUND, detail='User not found'
-        )
+        raise HTTPException(HTTPStatus.NOT_FOUND, detail='User not found')
 
     return database.pop(user_id - 1)
